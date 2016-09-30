@@ -6,10 +6,10 @@ import java.awt.event.KeyEvent;
 public class Typer {
 
 	public static void main(String[] args) throws Exception {
-		String[] strs = {"hello", "spam...", "spam!", "more spam!"};
+		String[] strs = {"bye "};
 		Robot r = new Robot();
 		Thread.sleep(5000);
-		for(int aa=0; aa<80; aa++){
+		for(int aa=0; aa<800; aa++){
 			for(int i=0; i<strs.length; i++){
 				String s = strs[i];
 				char[] cs = s.toCharArray();
@@ -19,10 +19,12 @@ public class Typer {
 					r.keyPress(keyCode);
 					r.keyRelease(keyCode);
 				}
+				r.keyPress((aa%2)+60);
+				r.keyRelease((aa%2)+60);
+				Thread.sleep(1500);
 				r.keyPress(KeyEvent.VK_ENTER);
 				r.keyRelease(KeyEvent.VK_ENTER);
 			}
-			Thread.sleep(10);
 		}
 	}
 }
